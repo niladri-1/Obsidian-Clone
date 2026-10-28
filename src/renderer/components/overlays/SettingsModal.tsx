@@ -393,6 +393,59 @@ export function SettingsModal() {
                     <span className="range-value">{Math.round(app.zoom * 100)}%</span>
                   </div>
                 </div>
+                <div className="setting-row">
+                  <div className="setting-info">
+                    <div className="setting-label">Zoom with Ctrl+Scroll</div>
+                    <div className="setting-help">Hold Ctrl (or Cmd) and scroll to zoom in/out.</div>
+                  </div>
+                  <div className="setting-control">
+                    <Toggle
+                      checked={app.ctrlScrollZoom !== false}
+                      label="Zoom with Ctrl+Scroll"
+                      onChange={(next) => void updateApp({ ctrlScrollZoom: next })}
+                    />
+                  </div>
+                </div>
+                <div className="setting-row">
+                  <div className="setting-info">
+                    <div className="setting-label">UI font</div>
+                    <div className="setting-help">
+                      Use a font installed on your system (e.g. Inter, Segoe UI, system-ui).
+                    </div>
+                  </div>
+                  <div className="setting-control">
+                    <input
+                      className="text-input"
+                      placeholder="e.g. Inter, -apple-system, sans-serif"
+                      aria-label="UI font family"
+                      value={appearance.fontFamily ?? ''}
+                      spellCheck={false}
+                      onChange={(event) =>
+                        void updateAppearance({ fontFamily: event.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="setting-row">
+                  <div className="setting-info">
+                    <div className="setting-label">Editor font</div>
+                    <div className="setting-help">
+                      Font used in the Markdown editor (e.g. Cascadia Code, JetBrains Mono, monospace).
+                    </div>
+                  </div>
+                  <div className="setting-control">
+                    <input
+                      className="text-input"
+                      placeholder="e.g. Cascadia Code, monospace"
+                      aria-label="Editor font family"
+                      value={appearance.editorFontFamily ?? ''}
+                      spellCheck={false}
+                      onChange={(event) =>
+                        void updateAppearance({ editorFontFamily: event.target.value })
+                      }
+                    />
+                  </div>
+                </div>
               </div>
             </>
           )}

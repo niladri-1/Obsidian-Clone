@@ -116,8 +116,16 @@ async function bootstrap(): Promise<void> {
 
   if (process.platform === 'win32') app.setAppUserModelId('com.obsidia.app');
 
-  applySessionHardening();
-  handleVaultProtocol(() => activeVaultRoot);
+  try {
+    applySessionHardening();
+  } catch {
+    // best effort
+  }
+  try {
+    handleVaultProtocol(() => activeVaultRoot);
+  } catch {
+    // best effort
+  }
 
   mainWindow = createMainWindow({
     preloadPath: path.join(__dirname, '../preload/index.js'),

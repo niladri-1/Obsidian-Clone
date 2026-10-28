@@ -49,8 +49,8 @@ const DEFAULT_SETTINGS: SettingsBundle = {
     propertiesInDocument: 'visible',
     promptDelete: true,
   },
-  appearance: { theme: 'system', accentColor: '', baseFontSize: 16 },
-  app: { theme: 'system', zoom: 1, lastVaultId: null },
+  appearance: { theme: 'system', accentColor: '', baseFontSize: 16, fontFamily: '', editorFontFamily: '' },
+  app: { theme: 'system', zoom: 1, lastVaultId: null, ctrlScrollZoom: true },
 };
 
 const INITIAL_UI: UIState = {

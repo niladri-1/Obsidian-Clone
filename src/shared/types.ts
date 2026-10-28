@@ -49,12 +49,15 @@ export interface AppearanceSettings {
   theme: 'system' | 'light' | 'dark';
   accentColor: string;
   baseFontSize: number;
+  fontFamily: string;
+  editorFontFamily: string;
 }
 
 export interface AppSettings {
   theme: 'system' | 'light' | 'dark';
   zoom: number;
   lastVaultId: string | null;
+  ctrlScrollZoom: boolean;
 }
 
 export interface ReadFileResult {

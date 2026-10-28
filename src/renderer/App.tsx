@@ -5,6 +5,7 @@ import { useStore } from './store/useStore';
 import { useTheme } from './hooks/useTheme';
 import { useAppEvents } from './hooks/useAppEvents';
 import { useGlobalHotkeys } from './hooks/useGlobalHotkeys';
+import { useCtrlScrollZoom } from './hooks/useCtrlScrollZoom';
 import { TitleBar } from './components/shell/TitleBar';
 import { Ribbon } from './components/shell/Ribbon';
 import { Sidebar } from './components/shell/Sidebar';
@@ -150,6 +151,7 @@ export function App() {
   useTheme();
   useAppEvents();
   useGlobalHotkeys();
+  useCtrlScrollZoom();
 
   const status = useStore((state) => state.status);
   const bootError = useStore((state) => state.bootError);

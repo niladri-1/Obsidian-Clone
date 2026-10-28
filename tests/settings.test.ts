@@ -83,7 +83,13 @@ describe('vault settings', () => {
     );
     const store = new VaultSettingsStore(root);
     const loaded = await store.load();
-    expect(loaded.appearance).toEqual({ theme: 'dark', accentColor: '', baseFontSize: 32 });
+    expect(loaded.appearance).toEqual({
+      theme: 'dark',
+      accentColor: '',
+      baseFontSize: 32,
+      fontFamily: '',
+      editorFontFamily: '',
+    });
     const updated = await store.updateAppearance({ accentColor: '#AABBCC' });
     expect(updated.accentColor).toBe('#aabbcc');
   });

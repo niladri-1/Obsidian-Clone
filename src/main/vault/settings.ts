@@ -34,12 +34,15 @@ export const DEFAULT_APPEARANCE: AppearanceSettings = {
   theme: 'system',
   accentColor: '',
   baseFontSize: 16,
+  fontFamily: '',
+  editorFontFamily: '',
 };
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
   theme: 'system',
   zoom: 1,
   lastVaultId: null,
+  ctrlScrollZoom: true,
 };
 
 const VAULT_KEYS = new Set(Object.keys(DEFAULT_VAULT_SETTINGS));
@@ -86,6 +89,11 @@ function asFolder(value: unknown, fallback: string): string {
   } catch {
     return fallback;
   }
+}
+
+function asString(value: unknown, fallback: string): string {
+  if (typeof value !== 'string') return fallback;
+  return value;
 }
 
 function asNumber(value: unknown, fallback: number, min: number, max: number): number {
@@ -142,6 +150,8 @@ export function sanitizeAppearance(raw: Record<string, unknown>): AppearanceSett
     theme: asEnum(raw.theme, ['system', 'light', 'dark'] as const, 'system'),
     accentColor: accent,
     baseFontSize: asNumber(raw.baseFontSize, DEFAULT_APPEARANCE.baseFontSize, 10, 32),
+    fontFamily: asString(raw.fontFamily, DEFAULT_APPEARANCE.fontFamily),
+    editorFontFamily: asString(raw.editorFontFamily, DEFAULT_APPEARANCE.editorFontFamily),
   };
 }
 
@@ -150,6 +160,7 @@ export function sanitizeAppSettings(raw: Record<string, unknown>): AppSettings {
     theme: asEnum(raw.theme, ['system', 'light', 'dark'] as const, 'system'),
     zoom: typeof raw.zoom === 'number' && raw.zoom >= 0.5 && raw.zoom <= 2 ? raw.zoom : 1,
     lastVaultId: typeof raw.lastVaultId === 'string' ? raw.lastVaultId : null,
+    ctrlScrollZoom: typeof raw.ctrlScrollZoom === 'boolean' ? raw.ctrlScrollZoom : true,
   };
 }
 

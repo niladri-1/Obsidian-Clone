@@ -42,11 +42,13 @@ function readableOn(hsl: Hsl | null): string {
   return hsl.l > 68 ? '#15161b' : '#ffffff';
 }
 
-/** Applies the persisted theme, accent, base font size and CSS zoom to the document. */
+/** Applies the persisted theme, accent, base font size, fonts and CSS zoom to the document. */
 export function useTheme(): void {
   const theme = useStore((state) => state.settings.appearance.theme);
   const accent = useStore((state) => state.settings.appearance.accentColor);
   const baseFontSize = useStore((state) => state.settings.appearance.baseFontSize);
+  const fontFamily = useStore((state) => state.settings.appearance.fontFamily);
+  const editorFontFamily = useStore((state) => state.settings.appearance.editorFontFamily);
   const zoom = useStore((state) => state.settings.app.zoom);
 
   useEffect(() => {
@@ -87,6 +89,26 @@ export function useTheme(): void {
     const size = Math.min(24, Math.max(12, Math.round(baseFontSize)));
     document.documentElement.style.setProperty('--base-font-size', `${size}px`);
   }, [baseFontSize]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (fontFamily && fontFamily.trim()) {
+      root.style.setProperty('--font-text', fontFamily.trim());
+      root.style.setProperty('--font-ui', fontFamily.trim());
+    } else {
+      root.style.removeProperty('--font-text');
+      root.style.removeProperty('--font-ui');
+    }
+  }, [fontFamily]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (editorFontFamily && editorFontFamily.trim()) {
+      root.style.setProperty('--font-mono', editorFontFamily.trim());
+    } else {
+      root.style.removeProperty('--font-mono');
+    }
+  }, [editorFontFamily]);
 
   useEffect(() => {
     const value = Math.min(2, Math.max(0.5, zoom));
