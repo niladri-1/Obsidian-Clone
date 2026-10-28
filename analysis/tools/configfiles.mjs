@@ -1,0 +1,11 @@
+import fs from "node:fs";
+const t = fs.readFileSync(process.argv[2], "utf8");
+const re = /configDir\s*\+\s*"\/"\s*\+\s*([A-Za-z0-9_$.]+)/g;
+let m;
+const seen = new Set();
+while ((m = re.exec(t))) seen.add(m[1]);
+console.log("expr:", [...seen].join(", "));
+const re2 = /"([A-Za-z0-9-]+\.json)"/g;
+const c = new Map();
+while ((m = re2.exec(t))) c.set(m[1], (c.get(m[1]) || 0) + 1);
+console.log([...c.entries()].sort((a, b) => b[1] - a[1]).map(([k, n]) => `${n} ${k}`).join("\n"));

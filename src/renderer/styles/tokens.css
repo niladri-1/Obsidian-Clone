@@ -1,0 +1,134 @@
+/*
+ * Original design tokens for Obsidia. The token *names* follow the widely used
+ * local-notes CSS convention so user CSS can target familiar surfaces, but every value
+ * below is original and unrelated to any third-party theme or stylesheet.
+ */
+:root {
+  color-scheme: light;
+
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+  --font-text: var(--font-ui);
+  --font-mono: 'Cascadia Code', 'SFMono-Regular', 'JetBrains Mono', Consolas, 'Liberation Mono',
+    monospace;
+
+  --base-font-size: 16px;
+  --font-ui-size: calc(var(--base-font-size) * 0.875);
+  --font-small: calc(var(--base-font-size) * 0.78125);
+  --font-tiny: calc(var(--base-font-size) * 0.6875);
+  --font-note: calc(var(--base-font-size) * 1.0625);
+  --font-code: calc(var(--base-font-size) * 0.90625);
+
+  /* Warm neutral ramp (original values). */
+  --color-base-00: #fbfbf8;
+  --color-base-10: #f5f5f0;
+  --color-base-20: #eeeee8;
+  --color-base-30: #e5e5dd;
+  --color-base-40: #d8d8cf;
+  --color-base-60: #8e9099;
+  --color-base-70: #656772;
+  --color-base-90: #30313a;
+  --color-base-100: #1c1d23;
+
+  --background-primary: var(--color-base-00);
+  --background-primary-alt: #ffffff;
+  --background-secondary: var(--color-base-10);
+  --background-secondary-alt: var(--color-base-20);
+  --background-modifier-hover: rgba(32, 33, 41, 0.065);
+  --background-modifier-active: rgba(32, 33, 41, 0.1);
+  --background-modifier-border: #e0dfd7;
+  --background-modifier-border-strong: #cfcec5;
+
+  --text-normal: #26272e;
+  --text-muted: #62646e;
+  --text-faint: #92949d;
+  --text-on-accent: #ffffff;
+  --text-error: #b23b3b;
+  --text-success: #2d7a53;
+  --text-warning: #96652a;
+
+  --accent-h: 262;
+  --accent-s: 56%;
+  --accent-l: 54%;
+  --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+  --accent-hover: hsl(var(--accent-h) var(--accent-s) calc(var(--accent-l) - 6%));
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 7%, transparent);
+
+  --color-red: #c14a4a;
+  --color-orange: #c07a35;
+  --color-yellow: #b9972e;
+  --color-green: #3f8a62;
+  --color-cyan: #3c8087;
+  --color-blue: #3f72b0;
+  --color-purple: #7a5cb8;
+  --color-pink: #b05a8b;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 1px 2px rgba(20, 21, 28, 0.05), 0 8px 24px rgba(20, 21, 28, 0.07);
+  --shadow-modal: 0 18px 60px rgba(16, 17, 24, 0.26), 0 2px 8px rgba(16, 17, 24, 0.12);
+  --ring: 0 0 0 2px var(--background-primary), 0 0 0 4px color-mix(in srgb, var(--accent) 55%, transparent);
+
+  --titlebar-height: 36px;
+  --statusbar-height: 22px;
+  --tabbar-height: 32px;
+  --ribbon-width: 40px;
+  --scrollbar-thumb: rgba(38, 39, 46, 0.18);
+  --scrollbar-thumb-hover: rgba(38, 39, 46, 0.3);
+  --selection: color-mix(in srgb, var(--accent) 22%, transparent);
+  --app-zoom: 1;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-base-00: #1b1c21;
+  --color-base-10: #17181c;
+  --color-base-20: #22232a;
+  --color-base-30: #2b2c34;
+  --color-base-40: #363741;
+  --color-base-60: #8a8c98;
+  --color-base-70: #a6a8b3;
+  --color-base-90: #d7d8df;
+  --color-base-100: #f0f0f4;
+
+  --background-primary: #1b1c21;
+  --background-primary-alt: #202127;
+  --background-secondary: #16171b;
+  --background-secondary-alt: #212229;
+  --background-modifier-hover: rgba(255, 255, 255, 0.065);
+  --background-modifier-active: rgba(255, 255, 255, 0.11);
+  --background-modifier-border: #2c2d35;
+  --background-modifier-border-strong: #3a3b45;
+
+  --text-normal: #e4e5ea;
+  --text-muted: #a4a6b1;
+  --text-faint: #71737f;
+  --text-error: #e58a8a;
+  --text-success: #7dc7a0;
+  --text-warning: #dfb478;
+
+  --accent-l: 66%;
+  --accent-hover: hsl(var(--accent-h) var(--accent-s) calc(var(--accent-l) + 6%));
+  --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 11%, transparent);
+
+  --color-red: #d77a7a;
+  --color-orange: #d59a63;
+  --color-yellow: #d4b75e;
+  --color-green: #74b68f;
+  --color-cyan: #74b0b7;
+  --color-blue: #7aa3d8;
+  --color-purple: #a88bd4;
+  --color-pink: #cf8bb0;
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px rgba(0, 0, 0, 0.32);
+  --shadow-modal: 0 22px 70px rgba(0, 0, 0, 0.62), 0 2px 10px rgba(0, 0, 0, 0.4);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.16);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+  --selection: color-mix(in srgb, var(--accent) 32%, transparent);
+  --ring: 0 0 0 2px var(--background-primary), 0 0 0 4px color-mix(in srgb, var(--accent) 65%, transparent);
+}

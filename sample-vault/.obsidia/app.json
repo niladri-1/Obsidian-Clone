@@ -1,0 +1,11 @@
+{
+  "alwaysUpdateLinks": true,
+  "defaultViewMode": "source",
+  "readableLineLength": true,
+  "showInlineTitle": true,
+  "tabSize": 2,
+  "useTab": false,
+  "spellcheck": true,
+  "propertiesInDocument": "visible",
+  "promptDelete": true
+}
