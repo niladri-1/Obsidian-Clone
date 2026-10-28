@@ -54,10 +54,10 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/obsidia.git
+git clone https://github.com/niladri-1/Obsidian-Clone.git
 
 # Navigate to the project directory
-cd obsidia
+cd Obsidian-Clone
 
 # Install all dependencies
 npm install
